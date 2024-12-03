@@ -2,11 +2,14 @@
 alias ls='eza -a'
 alias ll='eza -l'
 
-# alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+set -g fish_key_bindings fish_vi_key_bindings
 
 # =============
 # Abbreviations
 # =============
+
+# -- Repo
+abbr -a dotfiles "git --git-dir=$HOME/.cfg --work-tree=$HOME"
 
 # -- LLM
 abbr -a --set-cursor lm -- 'llm "%   "'
@@ -14,7 +17,6 @@ abbr -a --set-cursor lb -- 'pbpaste | llm "%   "'
 
 # -- Postgres
 abbr -a psql -- 'psql -h $PGHOST -U postgres -d postgres'
-# abbr -a pso -- 'psql -h db.pebloifvfgdjdbunjgur.supabase.co -U postgres -d postgres'
 
 # -- Git
 abbr -a brd -- git branch --merged dev | grep -v '^\*' | grep -v 'main' | xargs -n 1 git branch -d
@@ -37,7 +39,7 @@ abbr -a --set-cursor='%' -- ntypm 'npm i --save-dev @types/%'
 # =============
 
 # -- Node, PNPM
-set -gx PNPM_HOME "/Users/drustill/Library/pnpm"
+set -gx PNPM_HOME "$HOME/Library/pnpm"
 if not string match -q -- $PNPM_HOME $PATH
   set -gx PATH "$PNPM_HOME" $PATH
 end
