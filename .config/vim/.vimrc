@@ -1,5 +1,3 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 filetype plugin on
 filetype indent on
 au FocusGained,BufEnter * silent! checktime
@@ -294,7 +292,11 @@ nmap <silent> [d <Plug>(coc-definition)
 nmap <silent> ge <Plug>(coc-diagnostic-next)
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 
-nnoremap <silent> gh :call ShowDocumentation()<CR>
+" diagnostic hovering with coc only in a vim environment
+" vscode/cursor keep default
+if exists(':CocActionAsync')
+  nnoremap gh :call CocActionAsync('doHover')<CR>
+endif
 
 " nnoremap <silent><nowait> <space>f  :<C-u>CocList files<CR>
 " nnoremap <silent><nowait> <space>o  :<C-u>CocList -A outline -kind<CR>
@@ -304,7 +306,6 @@ nnoremap <silent> gh :call ShowDocumentation()<CR>
 " nnoremap <silent><nowait> <space>w  :<C-u>CocList -I -N symbols<CR>
 " nnoremap <silent><nowait> <space>y  :<C-u>CocList -A --normal yank<CR>
 " nnoremap <silent><nowait> <space>b  :<C-u>CocList -A -N --normal buffers<CR>
-
 
 function! ShowDocumentation()
   if CocAction('hasProvider', 'hover')
