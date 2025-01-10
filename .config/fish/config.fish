@@ -38,6 +38,8 @@ abbr -a --set-cursor='%' -- ntypm 'npm i --save-dev @types/%'
 # =============
 # Environment
 # =============
+#
+set -gx XDG_CONFIG_HOME "$HOME/.config"
 
 # -- Node, PNPM
 set -gx PNPM_HOME "$HOME/Library/pnpm"
@@ -46,7 +48,7 @@ if not string match -q -- $PNPM_HOME $PATH
 end
 
 set -gx NVM_DEFAULT_CURRENT lts
-nvm use lts >> /dev/null
+nvm use 20.15.0 >> /dev/null
 
 # -- Shell
 set -gx STARSHIP_SHELL "fish"
@@ -71,3 +73,5 @@ set -g VIRTUAL_ENV_DISABLE_PROMPT 1
 # Set up the session key that will be used to store logs
 # We don't use `random [min] [max]` because it is unavailable in older versions of fish shell
 set -gx STARSHIP_SESSION_KEY (string sub -s1 -l16 (random)(random)(random)(random)(random)0000000000000000)
+
+starship init fish | source
