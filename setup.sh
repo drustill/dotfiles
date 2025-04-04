@@ -32,6 +32,21 @@ else
   log ".vimrc not found in dotfiles — skipping."
 fi
 
+# Install vim-plug
+PLUG_VIM="$HOME/.vim/autoload/plug.vim"
+if [ ! -f "$PLUG_VIM" ]; then
+  echo "Installing vim-plug..." >&3
+  curl -fLo "$PLUG_VIM" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim \
+    && log "vim-plug installed." || fail "Failed to install vim-plug."
+else
+  log "vim-plug already installed."
+fi
+
+# Install Vim plugins
+echo "Installing Vim plugins..." >&3
+vim +PlugInstall +qall \
+  && log "Vim plugins installed." || fail "Failed to install Vim plugins."
+
 # Fish install
 if ! command -v fish &>/dev/null; then
   echo "Installing Fish..." >&3
