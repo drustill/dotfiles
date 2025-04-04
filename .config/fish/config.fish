@@ -38,7 +38,7 @@ abbr -a --set-cursor='%' -- ntypm 'npm i --save-dev @types/%'
 # =============
 # Environment
 # =============
-#
+
 set -gx XDG_CONFIG_HOME "$HOME/.config"
 
 if not contains $HOME/.local/bin $PATH
@@ -65,7 +65,6 @@ set -gx HOMEBREW_NO_ENV_HINTS 1
 set -gx EZA_CONFIG_DIR "$XDG_CONFIG_HOME/eza"
 set -gx SCRIPT_LIB "$HOME/scripts"
 fish_add_path "$SCRIPT_LIB/bin"
-
 
 # =============
 # Starship Prompt

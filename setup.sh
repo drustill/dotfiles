@@ -3,6 +3,9 @@
 
 set -e
 
+log() { printf "\e[1;32m✔\e[0m %s\n" "$1"; }
+fail() { printf "\e[1;31m✘\e[0m %s\n" "$1" >&2; exit 1; }
+
 # Copy ~/dotfiles/.config to ~/.config
 if [ -d "$HOME/.cfg" ]; then
   echo "Using bare repo (dotfiles alias set) — skipping copy."
@@ -20,6 +23,15 @@ then
   fish -c 'curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher'
 else
   echo "Fisher is already installed."
+fi
+
+# Install bash based nvm
+if [ ! -d "$HOME/.nvm" ]; then
+  echo "Installing bash-based nvm..."
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash &>/dev/null \
+    && log "nvm (bash) installed." || fail "Failed to install nvm (bash)."
+else
+  log "nvm already installed."
 fi
 
 # Install nvm.fish if not installed
