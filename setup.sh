@@ -23,6 +23,15 @@ else
     || fail "Failed to copy dotfiles."
 fi
 
+# Copy .vimrc to home
+if [ -f "$HOME/dotfiles/.config/vim/.vimrc" ]; then
+  cp "$HOME/dotfiles/.config/vim/.vimrc" "$HOME/.vimrc" \
+    && log "Copied .vimrc to home directory." \
+    || fail "Failed to copy .vimrc."
+else
+  log ".vimrc not found in dotfiles — skipping."
+fi
+
 # Fish install
 if ! command -v fish &>/dev/null; then
   echo "Installing Fish..." >&3
