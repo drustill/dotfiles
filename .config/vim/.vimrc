@@ -29,6 +29,7 @@ set wildmenu                            " │                                   
 set ruler                               " │                                                           │
 set showcmd                             " │                                                           │
 set cmdheight=1                         " │                                                           │
+set expandtab
 set tabstop=2                           " │                                                           │
 set softtabstop=2                       " │                                                           │
 set comments=
@@ -231,8 +232,10 @@ Plug 'tpope/vim-surround'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
 Plug 'justinmk/vim-sneak'
 Plug 'preservim/vim-markdown'
-Plug 'fatih/molokai'
+" Plug 'fatih/molokai'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'pangloss/vim-javascript'
+Plug 'dracula/vim', { 'as': 'dracula' }
 call plug#end()
 
 "
@@ -260,6 +263,7 @@ nnoremap S <Plug>Sneak_S
 
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
+
 
 nnoremap <leader>py <Plug>(Prettier)
 
@@ -318,6 +322,7 @@ endfunction
 autocmd! FileType coc-explorer nmap <buffer> o <CR>
 autocmd! FileType coc-explorer nmap <buffer> l <CR>
 
+autocmd FileType javascript highlight jsStorageClass cterm=bold ctermfg=161 gui=bold guifg=#F92672
 
 " List all symbols in the current buffer
 let g:coc_enable_locationlist = 1
@@ -377,5 +382,5 @@ set statusline+=%F\ %m%m%m\ (buf\ %n)\ (%l\ of\ %L\ lines)
 
 let g:coc_disable_transparent_cursor=1
 
-colorscheme molokai
-
+colorscheme dracula
+highlight Normal guibg=#191A21
