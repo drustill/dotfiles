@@ -13,22 +13,22 @@ else
   cp -r ~/dotfiles/.config/* ~/.config/
 fi
 
-# Install fish if not installed
-if ! command -v fish &> /dev/null
-then
-  echo "Fish shell not found. Installing..."
-  sudo apt-get install fish -y
-else
-  echo "Fish shell is already installed."
-fi
-
 # Install fisher if not installed
-if ! command -v fisher &> /dev/null
+if ! fish -c 'functions -q fisher'
 then
   echo "Fisher not found. Installing..."
-  curl -sL https://git.io/fisher | fish -c 'source && fisher install jorgebucaran/fisher'
+  curl -sL https://git.io/fisher | fish
 else
   echo "Fisher is already installed."
+fi
+
+# Install nvm.fish if not installed
+if ! fish -c 'functions -q nvm'
+then
+  echo "Installing nvm.fish via Fisher..."
+  fish -c 'fisher install jorgebucaran/nvm.fish'
+else
+  echo "nvm.fish already installed."
 fi
 
 # nvm
