@@ -20,7 +20,7 @@ abbr -a --set-cursor lb -- 'pbpaste | llm "%   "'
 abbr -a psql -- 'psql -h $PGHOST -U postgres -d postgres'
 
 # -- Git
-abbr -a brd -- git branch --merged dev | grep -v '^\*' | grep -v 'main' | xargs -n 1 git branch -d
+abbr -a brd -- 'git branch --merged dev | grep -v "^\*" | grep -v "main" | xargs -n 1 git branch -d'
 abbr -a st -- 'git status'
 
 # -- Python
