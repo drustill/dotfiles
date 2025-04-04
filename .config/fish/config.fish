@@ -75,3 +75,13 @@ set -g VIRTUAL_ENV_DISABLE_PROMPT 1
 set -gx STARSHIP_SESSION_KEY (string sub -s1 -l16 (random)(random)(random)(random)(random)0000000000000000)
 
 starship init fish | source
+
+# Created by `pipx` on 2025-01-13 19:24:22
+set PATH $PATH /Users/drustill/.local/bin
+
+# pnpm
+set -gx PNPM_HOME "/Users/drustill/Library/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
