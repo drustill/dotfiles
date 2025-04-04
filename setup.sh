@@ -26,7 +26,7 @@ fi
 if ! fish -c 'functions -q nvm'
 then
   echo "Installing nvm.fish via Fisher..."
-  fish -c 'fisher install jorgebucaran/nvm.fish'
+  fish -c 'fisher install FabioAntunes/fish-nvm edc/bass'
 else
   echo "nvm.fish already installed."
 fi
@@ -38,6 +38,14 @@ if [ ! -f "$HOME/.cargo/env" ]; then
   source "$HOME/.cargo/env"
 else
   echo "Rust already installed."
+fi
+
+# eza using cargo
+if ! command -v eza &> /dev/null; then
+  echo "Installing eza..."
+  cargo install eza
+else
+  echo "eza already installed."
 fi
 
 # starship
