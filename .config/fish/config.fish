@@ -48,7 +48,9 @@ if not string match -q -- $PNPM_HOME $PATH
 end
 
 set -gx NVM_DEFAULT_CURRENT lts
-nvm use 20.15.0 >> /dev/null
+if type -q nvm
+  nvm use 20.15.0 >> /dev/null
+end
 
 # -- Shell
 set -gx STARSHIP_SHELL "fish"
@@ -74,7 +76,9 @@ set -g VIRTUAL_ENV_DISABLE_PROMPT 1
 # We don't use `random [min] [max]` because it is unavailable in older versions of fish shell
 set -gx STARSHIP_SESSION_KEY (string sub -s1 -l16 (random)(random)(random)(random)(random)0000000000000000)
 
-starship init fish | source
+if type -q starship
+  starship init fish | source
+end
 
 # Created by `pipx` on 2025-01-13 19:24:22
 set PATH $PATH /Users/drustill/.local/bin
