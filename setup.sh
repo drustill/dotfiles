@@ -35,10 +35,6 @@ else
   log "Fish already installed."
 fi
 
-# Set fish_config theme
-fish -c 'fish_config theme choose Just\ a\ Touch'
-log "Fish theme set." || fail "Failed to set Fish theme."
-
 # Fisher install
 if ! fish -c 'functions -q fisher' &>/dev/null; then
   echo "Installing Fisher..." >&3
