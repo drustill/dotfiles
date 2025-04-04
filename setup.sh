@@ -26,7 +26,7 @@ fi
 if ! command -v fisher &> /dev/null
 then
   echo "Fisher not found. Installing..."
-  curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+  curl -sL https://git.io/fisher | fish -c 'source && fisher install jorgebucaran/fisher'
 else
   echo "Fisher is already installed."
 fi
