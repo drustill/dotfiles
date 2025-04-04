@@ -41,6 +41,10 @@ abbr -a --set-cursor='%' -- ntypm 'npm i --save-dev @types/%'
 #
 set -gx XDG_CONFIG_HOME "$HOME/.config"
 
+if not contains $HOME/.local/bin $PATH
+    set -gx PATH $HOME/.local/bin $PATH
+end
+
 # -- Node, PNPM
 set -gx PNPM_HOME "$HOME/Library/pnpm"
 if not string match -q -- $PNPM_HOME $PATH
