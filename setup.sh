@@ -22,7 +22,7 @@ else
   echo "Fisher is already installed."
 fi
 
-Install nvm.fish if not installed
+# Install nvm.fish if not installed
 if ! fish -c 'functions -q nvm'
 then
   echo "Installing nvm.fish via Fisher..."
