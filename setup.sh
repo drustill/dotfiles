@@ -23,6 +23,22 @@ else
     || fail "Failed to copy dotfiles."
 fi
 
+# Fish install
+if ! command -v fish &>/dev/null; then
+  echo "Installing Fish..." >&3
+  sudo apt-get install -y fish \
+    && log "Fish installed." || fail "Failed to install Fish."
+  # Set fish as default shell
+  chsh -s "$(which fish)" \
+    && log "Fish set as default shell." || fail "Failed to set Fish as default shell."
+else
+  log "Fish already installed."
+fi
+
+# Set fish_config theme
+fish -c 'fish_config theme choose Just\ a\ Touch'
+  && log "Fish theme set." || fail "Failed to set Fish theme."
+
 # Fisher install
 if ! fish -c 'functions -q fisher' &>/dev/null; then
   echo "Installing Fisher..." >&3
