@@ -80,8 +80,7 @@ fi
 
 log "Setup complete. Log saved to $LOGFILE"
 
-# Drop into fish shell
-exec fish
+fish
 
 ##!/bin/bash
 ## setup.sh sets up the dotfiles environment
