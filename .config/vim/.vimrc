@@ -162,8 +162,8 @@ endif
 Plug 'junegunn/vim-peekaboo'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'justinmk/vim-sneak'
-Plug 'preservim/vim-markdown'
 Plug 'pangloss/vim-javascript'
+Plug 'tpope/vim-commentary'
 Plug 'dracula/vim', { 'as': 'dracula' }
 call plug#end()
 
@@ -327,6 +327,7 @@ highlight Normal guibg=#191A21
 " Plug 'fatih/molokai'
 " Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" Plug 'preservim/vim-markdown'
 
 " let g:coc_global_extensions = [
 "   \ 'coc-css',
