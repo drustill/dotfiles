@@ -33,7 +33,7 @@ abbr -a vpy -- 'python -m venv venv && source venv/bin/activate.fish && clear &&
 abbr -a mkpy -- 'mkdir -p $argv && cd $argv && vpy'
 
 # -- NPM
-abbr -a --set-cursor='%' -- ntypm 'npm i --save-dev @types/%'
+# abbr -a --set-cursor='%' -- ntypm 'npm i --save-dev @types/%'
 
 # -- Docker @TODO
 # abbr -a -- 'docker-compose up -d'
