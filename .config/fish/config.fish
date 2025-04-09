@@ -18,8 +18,8 @@ set -g fish_greeting
 abbr -a dotfiles "git --git-dir=$HOME/.cfg --work-tree=$HOME"
 
 # -- LLM
-abbr -a --set-cursor lm -- 'llm "%   "'
-abbr -a --set-cursor lb -- 'pbpaste | llm "%   "'
+# abbr -a --set-cursor lm -- 'llm "%   "'
+# abbr -a --set-cursor lb -- 'pbpaste | llm "%   "'
 
 # -- Postgres
 abbr -a psql -- 'psql -h $PGHOST -U postgres -d postgres'
