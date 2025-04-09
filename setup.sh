@@ -16,7 +16,7 @@ log "Beginning dotfiles setup. Logging to $LOGFILE"
 if [ -d "$HOME/.cfg" ]; then
   log "Using bare repo — skipping .config copy."
 else
-  echo "Copying dotfiles to ~/.config..." >&3
+  log "Copying dotfiles to ~/.config..." >&3
   mkdir -p ~/.config
   cp -r ~/dotfiles/.config/* ~/.config/ \
     && log "Copied dotfiles to ~/.config." \
@@ -53,7 +53,7 @@ fi
 
 # Fish install
 if ! command -v fish &>/dev/null; then
-  echo "Installing Fish..." >&3
+  log "Installing Fish..." >&3
   sudo apt-get install -y fish \
     && log "Fish installed." || fail "Failed to install Fish."
   # Set fish as default shell
@@ -64,53 +64,35 @@ else
 fi
 
 # Fisher install
-if ! fish -c 'functions -q fisher' &>/dev/null; then
-  echo "Installing Fisher..." >&3
-  fish -c 'curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher' \
-    && log "Fisher installed." || fail "Failed to install Fisher."
-else
-  log "Fisher already installed."
-fi
-
-# Bash-based NVM
-if [ ! -d "$HOME/.nvm" ]; then
-  echo "Installing bash-based nvm..." >&3
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash \
-    && log "nvm (bash) installed." || fail "Failed to install nvm (bash)."
-else
-  log "nvm already installed."
-fi
-
-# nvm.fish
-if ! fish -c 'functions -q nvm' &>/dev/null; then
-  echo "Installing nvm.fish via Fisher..." >&3
-  fish -c 'fisher install FabioAntunes/fish-nvm edc/bass' \
-    && log "nvm.fish installed." || fail "Failed to install nvm.fish."
-else
-  log "nvm.fish already installed."
-fi
-
-# Rust
-# if [ ! -f "$HOME/.cargo/env" ]; then
-#   echo "Installing Rust..." >&3
-#   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y \
-#     && log "Rust installed." || fail "Failed to install Rust."
+# if ! fish -c 'functions -q fisher' &>/dev/null; then
+#   log "Installing Fisher..." >&3
+#   fish -c 'curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher' \
+#     && log "Fisher installed." || fail "Failed to install Fisher."
 # else
-#   log "Rust already installed."
+#   log "Fisher already installed."
 # fi
 
-# # eza
-# if ! command -v eza &>/dev/null; then
-#   echo "Installing eza..." >&3
-#   cargo install eza \
-#     && log "eza installed." || fail "Failed to install eza."
+# Bash-based NVM
+# if [ ! -d "$HOME/.nvm" ]; then
+#   log "Installing bash-based nvm..." >&3
+#   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash \
+#     && log "nvm (bash) installed." || fail "Failed to install nvm (bash)."
 # else
-#   log "eza already installed."
+#   log "nvm already installed."
+# fi
+
+# # nvm.fish
+# if ! fish -c 'functions -q nvm' &>/dev/null; then
+#   log "Installing nvm.fish via Fisher..." >&3
+#   fish -c 'fisher install FabioAntunes/fish-nvm edc/bass' \
+#     && log "nvm.fish installed." || fail "Failed to install nvm.fish."
+# else
+#   log "nvm.fish already installed."
 # fi
 
 # Starship
 if [ ! -x "$HOME/.local/bin/starship" ]; then
-  echo "Installing Starship..." >&3
+  log "Installing Starship..." >&3
   mkdir -p ~/.local/bin
   curl -sS https://starship.rs/install.sh | sh -s -- -b ~/.local/bin -y \
     && log "Starship installed." || fail "Failed to install Starship."
@@ -119,3 +101,4 @@ else
 fi
 
 log "Setup complete. Log saved to $LOGFILE"
+exec fish

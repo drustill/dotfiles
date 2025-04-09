@@ -89,11 +89,11 @@ if type -q starship
 end
 
 # Created by `pipx` on 2025-01-13 19:24:22
-set PATH $PATH /Users/drustill/.local/bin
+# set PATH $PATH /Users/drustill/.local/bin
 
-# pnpm
-set -gx PNPM_HOME "/Users/drustill/Library/pnpm"
-if not string match -q -- $PNPM_HOME $PATH
-  set -gx PATH "$PNPM_HOME" $PATH
-end
-# pnpm end
+# # pnpm
+# set -gx PNPM_HOME "/Users/drustill/Library/pnpm"
+# if not string match -q -- $PNPM_HOME $PATH
+#   set -gx PATH "$PNPM_HOME" $PATH
+# end
+# # pnpm end
