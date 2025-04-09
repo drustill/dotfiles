@@ -42,9 +42,13 @@ else
   log "vim-plug already installed."
 fi
 
-echo "Installing Vim plugins (headless)..." >&3
-vim -E -s +PlugInstall +qall \
-  && log "Vim plugins installed." || fail "Failed to install Vim plugins."
+vim -V3 -E -s +PlugInstall +qall &> ~/vim-install.log || {
+  cat ~/vim-install.log >&3
+  fail "Failed to install Vim plugins (see vim-install.log for details)."
+}
+# echo "Installing Vim plugins (headless)..." >&3
+# vim -E -s +PlugInstall +qall \
+#   && log "Vim plugins installed." || fail "Failed to install Vim plugins."
 
 # Fish install
 if ! command -v fish &>/dev/null; then
