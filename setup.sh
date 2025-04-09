@@ -63,6 +63,19 @@ else
   log "Fish already installed."
 fi
 
+# Starship
+if [ ! -x "$HOME/.local/bin/starship" ]; then
+  log "Installing Starship..." >&3
+  mkdir -p ~/.local/bin
+  curl -sS https://starship.rs/install.sh | sh -s -- -b ~/.local/bin -y \
+    && log "Starship installed." || fail "Failed to install Starship."
+else
+  log "Starship already installed."
+fi
+
+log "Setup complete. Log saved to $LOGFILE"
+
+
 # Fisher install
 # if ! fish -c 'functions -q fisher' &>/dev/null; then
 #   log "Installing Fisher..." >&3
@@ -89,16 +102,3 @@ fi
 # else
 #   log "nvm.fish already installed."
 # fi
-
-# Starship
-if [ ! -x "$HOME/.local/bin/starship" ]; then
-  log "Installing Starship..." >&3
-  mkdir -p ~/.local/bin
-  curl -sS https://starship.rs/install.sh | sh -s -- -b ~/.local/bin -y \
-    && log "Starship installed." || fail "Failed to install Starship."
-else
-  log "Starship already installed."
-fi
-
-log "Setup complete. Log saved to $LOGFILE"
-exec fish
