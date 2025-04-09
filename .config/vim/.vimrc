@@ -382,6 +382,7 @@ set laststatus=2
 set statusline+=%F\ %m%m%m\ (buf\ %n)\ (%l\ of\ %L\ lines)
 
 let g:coc_disable_transparent_cursor=1
+let g:coc_disable_startup_warning = 1
 
 colorscheme dracula
 highlight Normal guibg=#191A21
