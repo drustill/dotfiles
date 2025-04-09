@@ -35,21 +35,21 @@ fi
 # Install vim-plug
 PLUG_VIM="$HOME/.vim/autoload/plug.vim"
 if [ ! -f "$PLUG_VIM" ]; then
-  echo "Installing vim-plug..." >&3
+  log "Installing vim-plug..." >&3
   curl -fLo "$PLUG_VIM" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim \
     && log "vim-plug installed." || fail "Failed to install vim-plug."
 else
   log "vim-plug already installed."
 fi
 
-log "Installing Vim plugins..."
-vim -E -s -u NONE \
+log "Installing Vim plugins..." >&3
+vim -V3 -E -u NONE \
   -c "source ~/.vim/autoload/plug.vim" \
   -c "source ~/.vimrc" \
   -c "PlugInstall" \
   -c "qall" \
   && log "Vim plugins installed." \
-  || fail "Failed to install Vim plugins."
+  || fail "Failed to install Vim plugins. Check $LOGFILE for details."
 
 # Fish install
 if ! command -v fish &>/dev/null; then
