@@ -1,6 +1,11 @@
 # Better ls
-alias ls='eza -a'
-alias ll='eza -l'
+if type -q eza
+    alias ls='eza -a'
+    alias ll='eza -l'
+else
+    alias ls='ls -a'
+    alias ll='ls -l'
+end
 
 set -g fish_key_bindings fish_vi_key_bindings
 set -g fish_greeting

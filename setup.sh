@@ -91,22 +91,22 @@ else
 fi
 
 # Rust
-if [ ! -f "$HOME/.cargo/env" ]; then
-  echo "Installing Rust..." >&3
-  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y \
-    && log "Rust installed." || fail "Failed to install Rust."
-else
-  log "Rust already installed."
-fi
+# if [ ! -f "$HOME/.cargo/env" ]; then
+#   echo "Installing Rust..." >&3
+#   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y \
+#     && log "Rust installed." || fail "Failed to install Rust."
+# else
+#   log "Rust already installed."
+# fi
 
-# eza
-if ! command -v eza &>/dev/null; then
-  echo "Installing eza..." >&3
-  cargo install eza \
-    && log "eza installed." || fail "Failed to install eza."
-else
-  log "eza already installed."
-fi
+# # eza
+# if ! command -v eza &>/dev/null; then
+#   echo "Installing eza..." >&3
+#   cargo install eza \
+#     && log "eza installed." || fail "Failed to install eza."
+# else
+#   log "eza already installed."
+# fi
 
 # Starship
 if [ ! -x "$HOME/.local/bin/starship" ]; then
