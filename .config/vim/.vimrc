@@ -224,7 +224,9 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 call plug#begin()
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+if executable('node')
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+endif
 " Plug 'HerringtonDarkholme/yats.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'tmux-plugins/vim-tmux'
