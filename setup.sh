@@ -42,13 +42,17 @@ else
   log "vim-plug already installed."
 fi
 
-vim -V3 -E -s +PlugInstall +qall &> ~/vim-install.log || {
-  cat ~/vim-install.log >&3
-  fail "Failed to install Vim plugins (see vim-install.log for details)."
-}
-# echo "Installing Vim plugins (headless)..." >&3
-# vim -E -s +PlugInstall +qall \
-#   && log "Vim plugins installed." || fail "Failed to install Vim plugins."
+# Install Vim plugins (headless, without .vimrc depending on plug.vim being sourced)
+echo "Installing Vim plugins..." >&3
+
+# Make sure plug.vim is sourced explicitly in this session
+vim -E -s -u NONE \
+  -c "source ~/.vim/autoload/plug.vim" \
+  -c "source ~/.vimrc" \
+  -c "PlugInstall" \
+  -c "qall" \
+  && log "Vim plugins installed." \
+  || { cat ~/vim-install.log >&3; fail "Failed to install Vim plugins."; }
 
 # Fish install
 if ! command -v fish &>/dev/null; then
