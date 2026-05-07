@@ -46,3 +46,5 @@ endfun
 if has("autocmd")
     autocmd BufWritePre * call CleanExtraSpaces()
 endif
+
+colorscheme habamax
