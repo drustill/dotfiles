@@ -1,0 +1,37 @@
+{
+    "editor.lineNumbers": "relative",
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.detectIndentation": false,
+    "editor.autoIndent": "full",
+    "editor.matchBrackets": "always",
+    "editor.cursorSurroundingLines": 5,
+    "files.trimTrailingWhitespace": true,
+    "vim.leader": ",",
+    "vim.hlsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.showcmd": true,
+    "vim.gdefault": false,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        { "before": ["0"], "after": ["^"] },
+        { "before": ["j"], "after": ["g", "j"] },
+        { "before": ["k"], "after": ["g", "k"] },
+        { "before": ["<leader>", "e"], "commands": [{ "command": "workbench.action.quickOpen" }] },
+        { "before": ["<leader>", "w"], "commands": [{ "command": "workbench.action.files.save" }] },
+        { "before": ["<leader>", "<leader>"], "commands": [{ "command": "workbench.action.showAllEditorsByMostRecentlyUsed" }] },
+        { "before": ["<leader>", "n"], "commands": [{ "command": "workbench.action.nextEditor" }] },
+        { "before": ["<leader>", "b"], "commands": [{ "command": "workbench.action.previousEditor" }] },
+        { "before": ["<leader>", "d"], "commands": [{ "command": "workbench.action.closeActiveEditor" }] },
+        { "before": ["<leader>", "v"], "commands": [{ "command": "workbench.action.splitEditor" }] },
+        { "before": ["<leader>", "s"], "commands": [{ "command": "workbench.action.splitEditorOrthogonal" }] },
+        { "before": ["<leader>", "<CR>"], "commands": [":nohlsearch"] },
+        { "before": ["<leader>", "q", "q"], "commands": [{ "command": "workbench.action.closeWindow" }] },
+        { "before": ["<leader>", "q", "w"], "commands": [{ "command": "workbench.action.files.saveAll" }, { "command": "workbench.action.closeWindow" }] },
+        { "before": ["<C-y>"], "commands": [{ "command": "editorScroll", "args": { "to": "up", "by": "line", "value": 5 } }] },
+        { "before": ["<C-e>"], "commands": [{ "command": "editorScroll", "args": { "to": "down", "by": "line", "value": 5 } }] }
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        { "before": [">"], "after": [">", "g", "v"] },
+        { "before": ["<"], "after": ["<", "g", "v"] }
+    ]
+}
