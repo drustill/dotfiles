@@ -1,0 +1,7 @@
+alias l='ls -lah'
+alias la='ls -a'
+
+alias gp='git push'
+alias gb='git branch'
+alias gsw='git switch'
+alias st='git status'

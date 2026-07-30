@@ -48,3 +48,4 @@ if has("autocmd")
 endif
 
 colorscheme habamax
+syntax on
